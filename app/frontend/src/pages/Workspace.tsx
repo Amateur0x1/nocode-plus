@@ -424,7 +424,7 @@ export default function Workspace() {
               <iframe
                 title="应用预览"
                 srcDoc={currentHtml}
-                sandbox="allow-scripts"
+                sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-popups allow-downloads"
                 className={`h-full bg-white rounded-lg border border-zinc-800 transition-all ${
                   deviceMode === 'mobile' ? 'w-[390px] max-w-full' : 'w-full'
                 }`}
