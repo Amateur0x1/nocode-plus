@@ -1,8 +1,10 @@
 import logging
 import os
+from pathlib import Path
 from typing import List, Literal
 
 import httpx
+from dotenv import load_dotenv
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
@@ -13,6 +15,8 @@ from schemas.auth import UserResponse
 logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/api/v1/vibe", tags=["vibe"])
+
+ENV_PATH = Path(__file__).resolve().parent.parent.parent / ".env"
 
 
 class ChatMessage(BaseModel):
@@ -35,7 +39,9 @@ async def generate(
     current_user: UserResponse = Depends(get_current_user),
 ):
     """Call DeepSeek chat completions with the user's own API key."""
-    api_key = os.environ.get("DEEPSEEK_API_KEY")
+    if not (os.environ.get("DEEPSEEK_API_KEY") or "").strip():
+        load_dotenv(ENV_PATH, override=True)
+    api_key = (os.environ.get("DEEPSEEK_API_KEY") or "").strip()
     if not api_key:
         raise HTTPException(status_code=500, detail="DEEPSEEK_API_KEY 未配置，请先在平台密钥设置中添加")
     base_url = (os.environ.get("DEEPSEEK_BASE_URL") or "https://api.deepseek.com").rstrip("/")
