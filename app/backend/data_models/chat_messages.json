@@ -1,0 +1,23 @@
+{
+    "title": "chat_messages",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "project_id": {
+            "type": "integer"
+        },
+        "role": {
+            "type": "string"
+        },
+        "content": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "project_id",
+        "role",
+        "content"
+    ]
+}

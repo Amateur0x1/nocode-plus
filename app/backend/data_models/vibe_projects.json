@@ -1,0 +1,18 @@
+{
+    "title": "vibe_projects",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "name": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "name"
+    ]
+}

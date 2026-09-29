@@ -1,0 +1,26 @@
+{
+    "title": "app_versions",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "project_id": {
+            "type": "integer"
+        },
+        "version_number": {
+            "type": "integer"
+        },
+        "html_code": {
+            "type": "string"
+        },
+        "prompt": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "project_id",
+        "version_number",
+        "html_code"
+    ]
+}
