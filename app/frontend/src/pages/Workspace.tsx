@@ -16,7 +16,6 @@ import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import {
-  AI_MODEL,
   SYSTEM_PROMPT,
   client,
   extractHtmlCode,
@@ -143,18 +142,13 @@ export default function Workspace() {
 
     let streamed = '';
     try {
-      await client.ai.gentxt({
-        messages: buildAiMessages(text, messages),
-        model: AI_MODEL,
-        stream: true,
-        onChunk: (chunk) => {
-          streamed += chunk.content;
-          setStreamText(streamed);
-        },
-        onError: (e) => {
-          throw new Error((e as { message?: string })?.message || '生成失败');
-        },
+      const aiRes = await client.apiCall.invoke({
+        url: '/api/v1/vibe/generate',
+        method: 'POST',
+        data: { messages: buildAiMessages(text, messages) },
+        options: { timeout: 600_000 },
       });
+      streamed = String(aiRes.data?.content ?? '');
 
       const html = extractHtmlCode(streamed);
       if (html) {

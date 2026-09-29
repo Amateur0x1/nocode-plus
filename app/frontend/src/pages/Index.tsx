@@ -132,7 +132,7 @@ export default function Index() {
               className="min-h-[96px] bg-zinc-950 border-zinc-800 text-zinc-50 placeholder:text-zinc-600 focus-visible:ring-lime-400/40 resize-none text-sm"
             />
             <div className="mt-3 flex items-center justify-between gap-3">
-              <p className="text-xs text-zinc-600 font-['IBM_Plex_Mono']">Enter 生成 · Claude Opus 5 驱动</p>
+              <p className="text-xs text-zinc-600 font-['IBM_Plex_Mono']">Enter 生成 · DeepSeek Flash 驱动</p>
               <Button
                 disabled={creating}
                 onClick={() => handleCreate()}

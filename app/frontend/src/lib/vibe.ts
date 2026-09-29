@@ -23,7 +23,7 @@ export interface AppVersion {
   prompt: string;
 }
 
-export const AI_MODEL = 'claude-opus-5';
+export const AI_MODEL_LABEL = 'DeepSeek Flash';
 
 export const SYSTEM_PROMPT = `你是 VibeCoding Studio 的应用生成引擎。用户会用自然语言描述想要的应用,或对现有应用提出修改。
 
